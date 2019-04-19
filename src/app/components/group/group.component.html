@@ -1,0 +1,83 @@
+<div class="content-header">
+    <h2>{{'GROUP_MANAGEMENT' | translate}}</h2>
+
+    <div class="search-form">
+        <label for=""><i class="fa fa-search" aria-hidden="true"></i></label>
+        <input type="text" placeholder="{{'SEARCH' | translate}}" [(ngModel)]="searchText" (ngModelChange)="searchGroups.next($event)">
+        <button (click)="showAddGroupRow(true)">{{'ADD_GROUP' | translate}}</button>
+    </div>
+</div>
+
+<div>
+    <table class="table table-responsive table-bordered table-group">
+        <thead>
+            <tr>
+                <th>{{'GROUP_NAME' | translate}}</th>
+                <th class="td-group-1">T1 <i class="fa fa-question-circle pd-5 tooltip-info" pTooltip="{{'BFSCIT' | translate}}"></i></th>
+                <th class="td-group-1">T2 <i class="fa fa-question-circle pd-5 tooltip-info" pTooltip="{{'BFSCOT' | translate}}"></i></th>
+                <th class="td-group-2">T3 <i class="fa fa-question-circle pd-5 tooltip-info" pTooltip="{{'CASCIT_AM' | translate}}"></i></th>
+                <th class="td-group-2">T4 <i class="fa fa-question-circle pd-5 tooltip-info" pTooltip="{{'CASCOT_AM' | translate}}"></i></th>
+                <th class="td-group-2">T5 <i class="fa fa-question-circle pd-5 tooltip-info" pTooltip="{{'CASCIT_PM' | translate}}"></i></th>
+                <th class="td-group-2">T6 <i class="fa fa-question-circle pd-5 tooltip-info" pTooltip="{{'CASCOT_PM' | translate}}"></i></th>
+                <th class="td-group-1">T7 <i class="fa fa-question-circle pd-5 tooltip-info" pTooltip="{{'AFSCIT' | translate}}"></i></th>
+                <th class="td-group-1">T8 <i class="fa fa-question-circle pd-5 tooltip-info" pTooltip="{{'AFSCOT' | translate}}"></i></th>
+                <th class="td-group-1">{{'AGENT' | translate}}</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let group of groups; let i = index">
+                <td>{{ group['group_name'] }}</td>
+                <td><p-calendar [(ngModel)]="groups[i]['BFSCIT_TIME']" timeOnly="true" [readonlyInput]="true" (onClose)="onChangeTime('BFSCIT_TIME', groups[i]['BFSCIT_TIME'], groups[i]['key'])"></p-calendar></td>
+                <td><p-calendar [(ngModel)]="groups[i]['BFSCOT_TIME']" timeOnly="true" [readonlyInput]="true" (onClose)="onChangeTime('BFSCOT_TIME', groups[i]['BFSCOT_TIME'], groups[i]['key'])"></p-calendar></td>
+                <td><p-calendar [(ngModel)]="groups[i]['CASCIT_AM_TIME']" timeOnly="true" [readonlyInput]="true" (onClose)="onChangeTime('CASCIT_AM_TIME', groups[i]['CASCIT_AM_TIME'], groups[i]['key'])"></p-calendar></td>
+                <td><p-calendar [(ngModel)]="groups[i]['CASCOT_AM_TIME']" timeOnly="true" [readonlyInput]="true" (onClose)="onChangeTime('CASCOT_AM_TIME', groups[i]['CASCOT_AM_TIME'], groups[i]['key'])"></p-calendar></td>
+                <td><p-calendar [(ngModel)]="groups[i]['CASCIT_PM_TIME']" timeOnly="true" [readonlyInput]="true" (onClose)="onChangeTime('CASCIT_PM_TIME', groups[i]['CASCIT_PM_TIME'], groups[i]['key'])"></p-calendar></td>
+                <td><p-calendar [(ngModel)]="groups[i]['CASCOT_PM_TIME']" timeOnly="true" [readonlyInput]="true" (onClose)="onChangeTime('CASCOT_PM_TIME', groups[i]['CASCOT_PM_TIME'], groups[i]['key'])"></p-calendar></td>
+                <td><p-calendar [(ngModel)]="groups[i]['AFSCIT_TIME']" timeOnly="true" [readonlyInput]="true" (onClose)="onChangeTime('AFSCIT_TIME', groups[i]['AFSCIT_TIME'], groups[i]['key'])"></p-calendar></td>
+                <td><p-calendar [(ngModel)]="groups[i]['AFSCOT_TIME']" timeOnly="true" [readonlyInput]="true" (onClose)="onChangeTime('AFSCOT_TIME', groups[i]['AFSCOT_TIME'], groups[i]['key'])"></p-calendar></td>
+                <td>
+                    <div class="col col-50">
+                        <select [(ngModel)]="groups[i]['agent']" name="agent">
+                            <option value="" disabled selected>{{'SELECT_AGENT' | translate}}</option>
+                            <option *ngFor="let item of listAgents" [value]="item['value']">{{ item['label'] }}</option>
+                        </select>
+                    </div>
+                </td>
+                <td>
+                    <i class="fa fa-trash mr-5" (click)="deleteVacation(groups[i]['key'])"></i>
+                    <i class="fa fa-cog tooltip-info" pTooltip="{{'VACATION_SETTINGS' | translate}}" (click)="redirectToVacationSettings(groups[i]['key'])"></i>
+                </td>
+            </tr>
+            
+            <tr *ngIf="showAddGroup">
+                <td>
+                    <input class="enter-group-name" type="text" placeholder="{{'ENTER_GROUP_NAME' | translate}}" [(ngModel)]="groupName">
+                </td>
+                <td><p-calendar [(ngModel)]="BFSCIT_TIME" timeOnly="true" [readonlyInput]="true"></p-calendar></td>
+                <td><p-calendar [(ngModel)]="BFSCOT_TIME" timeOnly="true" [readonlyInput]="true"></p-calendar></td>
+                <td><p-calendar [(ngModel)]="CASCIT_AM_TIME" timeOnly="true" [readonlyInput]="true"></p-calendar></td>
+                <td><p-calendar [(ngModel)]="CASCOT_AM_TIME" timeOnly="true" [readonlyInput]="true"></p-calendar></td>
+                <td><p-calendar [(ngModel)]="CASCIT_PM_TIME" timeOnly="true" [readonlyInput]="true"></p-calendar></td>
+                <td><p-calendar [(ngModel)]="CASCOT_PM_TIME" timeOnly="true" [readonlyInput]="true"></p-calendar></td>
+                <td><p-calendar [(ngModel)]="AFSCIT_TIME" timeOnly="true" [readonlyInput]="true"></p-calendar></td>
+                <td><p-calendar [(ngModel)]="AFSCOT_TIME" timeOnly="true" [readonlyInput]="true"></p-calendar></td>
+                <td>
+                    <div class="col col-50">
+                        <select [(ngModel)]="agent" name="agent">
+                            <option value="" disabled selected>{{'SELECT_AGENT' | translate}}</option>
+                            <option *ngFor="let item of listAgents" [value]="item['value']">{{ item['label'] }}</option>
+                        </select>
+                    </div>
+                </td>
+                <td>
+                    <button class="btn btn-success" (click)="addGroup()">{{'SAVE' | translate}}</button>
+                    <button class="btn btn-danger" (click)="showAddGroupRow(false)"><i class="fa fa-times"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+  
+<app-loading></app-loading>

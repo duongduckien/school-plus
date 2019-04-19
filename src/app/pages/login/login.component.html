@@ -1,0 +1,45 @@
+<div class="login">
+    <div class="login-header">
+        <div class="login-header-wrapper">
+            <div class="login-header-logo">
+                <img src="./assets/img/webapp-logo-text.png" />
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay">
+        <div class="modal-form loginForm">
+            <div class="logmForm-bg"></div>
+
+            <div class="logmForm-form">
+                <div class="form-logo">
+                    <p>{{ 'LOGIN' | translate }}</p>
+                </div>
+
+                <form action="">
+                    <div class="form-row">
+                        <label for="">
+                            <i class="ion-person"></i>
+                        </label>
+                        <input type="text" placeholder="{{ 'EMAIL' | translate }}" name="username" [(ngModel)]="username">
+                    </div>
+
+                    <div class="form-row">
+                        <label for="">
+                            <i class="ion-locked"></i>
+                        </label>
+                        <input type="password" placeholder="{{ 'PASSWORD' | translate }}" name="password" [(ngModel)]="password">
+                    </div>
+
+                    <div class="form-row" *ngIf="message">
+                        <p class="invalid">{{ message }}</p>
+                    </div>
+
+                    <button type="submit" (click)="login()">{{'CONTINUE' | translate}}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-loading></app-loading>

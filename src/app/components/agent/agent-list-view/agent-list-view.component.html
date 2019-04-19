@@ -1,0 +1,38 @@
+<div class="body-content">
+    <div class="agent-table">
+        <table>
+            <thead>
+                <tr>
+                    <td (click)='orderBy("first_name")'>{{'FIRST_NAME' | translate}}
+                        <div class="order">
+                            <span class="ion-arrow-up-b"></span>
+                            <span class="ion-arrow-down-b"></span>
+                        </div>
+                    </td>
+                    <td (click)='orderBy("last_name")'>{{'LAST_NAME' | translate}}
+                        <div class="order">
+                            <span class="ion-arrow-up-b"></span>
+                            <span class="ion-arrow-down-b"></span>
+                        </div>
+                    </td>
+                    <td>{{'EMAIL' | translate}}</td>
+                    <td>{{'PHONE_NUMBER' | translate}}</td>
+                    <td></td>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor='let agent of (agents | searchText: searchText | sortData: fieldsort:direction)'>
+                    <td>{{ agent['first_name'] }}</td>
+                    <td>{{ agent['last_name'] }}</td>
+                    <td>{{ agent['email'] }}</td>
+                    <td>{{ agent['phone_number'] }}</td>
+                    <td>
+                        <i class="fa fa-pencil" aria-hidden="true" (click)="editAgent(agent['$key'])"></i>
+                        <i class="fa fa-trash" aria-hidden="true" (click)="deleteAgent(agent['$key'])"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

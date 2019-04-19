@@ -1,0 +1,15 @@
+<div class="content-header">
+    <h2>{{'AGENTS_MANAGEMENT' | translate}}</h2>
+
+    <div class="search-form">
+        <label for=""><i class="fa fa-search" aria-hidden="true"></i></label>
+        <input type="text" placeholder="Tìm kiếm" [(ngModel)]="searchText" (ngModelChange)="onChangeAgentSearch($event)">
+        <button (click)="showModalPopup()">{{'ADD_AGENT' | translate}}</button>
+    </div>
+</div>
+
+<app-agent-list-view></app-agent-list-view>
+
+<app-agent-modal></app-agent-modal>
+
+<app-loading></app-loading>

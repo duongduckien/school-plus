@@ -1,0 +1,73 @@
+.setting {
+  padding: 0 50px;
+  .setting-wrapper {
+    padding: 30px 0;
+    background: #fff;
+    &:before, &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+  label {
+    padding: 15px 0px 1px 0px;
+    margin: 0px;
+  }
+  @media screen and (max-width: 767px) {
+    float: none;
+    padding: 0;
+  }
+  .acc-setting, .change-pass {
+    margin: auto;
+    width: 50%;
+    @media screen and (max-width: 767px){
+      width: 100%;
+      padding: 15px;
+    }
+    h2 {
+      color: #38495c;
+      padding-left: 10px;
+    }
+  }
+  .row {
+    margin: 20px 0;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #4b5b6c;
+  }
+  input {
+    display: block;
+    width: 150%;
+    height: 40px;
+    padding: 5px 10px 5px 40px;
+    color: #4b5b6c;
+    font-size: 16px;
+    border: 1px solid #dbe1e5;
+    border-radius: 2px;
+  }
+  button {
+    width: 150%;
+    height: 45px;
+    color: #000;
+    background: #FED014;
+    border: 1px solid #FED014;
+    border-radius: 2px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  .input-icon {
+    position: relative;
+    .icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      color: #b2bcc6;
+    }
+  }
+}

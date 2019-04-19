@@ -1,0 +1,41 @@
+.app-header {
+    position: relative;
+	flex-direction: row;
+	height: 60px;
+	padding: 0;
+	margin: 0;
+	background-color: #FED014;
+    border-bottom: 1px solid #c8ced3;
+    .navbar-brand {
+        margin-top: -5px;
+        img {
+            height: 40px;
+        }
+    }
+    .header-right {
+        margin-right: 25px;
+        text-align: right;
+        padding-top: 5px;
+        .logout {
+            background-color: transparent;
+            border: 1px solid transparent;
+            color: #000;
+            margin-left: 35px;
+            padding: 15px;
+            img, span, i {
+                vertical-align: middle;
+                user-select: none;
+            }
+            span {
+                text-transform: uppercase;
+                font-size: 1.2em;
+                font-weight: bold;
+                i {
+                    margin-left: 5px;
+                    font-size: 24px;
+                    font-size: 1.2em;
+                }
+            }
+        }
+    }
+}

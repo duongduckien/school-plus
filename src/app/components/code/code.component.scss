@@ -1,0 +1,34 @@
+.masterCode {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 100px 20px;
+  background: #fff;
+  form {
+    width: 280px;
+    max-width: 100%;
+    margin: 0 auto;
+    input {
+      padding: 5px 40px;
+      margin-bottom: 20px;
+      font-size: 18px;
+      line-height: 28px;
+      color: #847878;
+      letter-spacing: 2px;
+      text-align: center;
+      background: #f4f4f4;
+      border: 1px solid #dae0e4;
+      border-radius: 2px;
+    }
+    button {
+      width: 100%;
+      padding: 10px 20px;
+      color: #000;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 2px;
+      background: #FED014;
+      border: 0;
+    }
+  }
+}

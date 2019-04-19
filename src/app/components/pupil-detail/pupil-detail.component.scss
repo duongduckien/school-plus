@@ -1,0 +1,88 @@
+//colors
+$white: #fff;
+$color_ghost_approx: #c8ced3;
+$color_porcelain_approx: #f0f3f5;
+$black_12_5: rgba(0, 0, 0, 0.125);
+
+.card-pupil-detail {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-color: $white;
+	//Instead of the line below you could use @include background-clip($clip)
+	background-clip: border-box;
+	border: 1px solid $color_ghost_approx;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 0.25rem;
+}
+
+.wrap-card-body-pupil-detail {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.card-header-pupil-detail {
+	padding: 0.75rem 1.25rem;
+	margin-bottom: 0;
+	background-color: $color_porcelain_approx;
+    border-bottom: 1px solid $color_ghost_approx;
+    font-size: 25px;
+}
+
+.icon-pupil-detail {
+    margin-right: 10px;
+}
+
+.card-body-pupil-detail {
+	flex: 1 1 auto;
+	padding: 1.25rem;
+	width: 45%;
+}
+
+.chart-and-image {
+	flex: 1 1 auto;
+	padding: 1.25rem;
+	width: 45%;
+}
+
+.list-group-pupil-detail {
+	display: flex;
+	flex-direction: column;
+	padding-left: 0;
+	margin-bottom: 0;
+}
+
+.list-group-item-pupil-detail {
+	position: relative;
+	display: block;
+	padding: 0.75rem 1.25rem;
+	margin-bottom: -1px;
+	background-color: $white;
+    border: 1px solid $black_12_5;
+    flex-direction: row;
+}
+
+.left-pupil-detail {
+    text-align: right;
+    font-size: 16px;
+    padding-right: 20px;
+}
+
+.right-pupil-detail {
+    text-align: left;
+    font-size: 16px;
+    padding-left: 0px;
+}
+
+.image-pupil-detail {
+	width: 60%;
+	display: block;
+	margin: 0 auto;
+}
+
+.chart-pupil-detail {
+	margin-top: 4rem;
+}

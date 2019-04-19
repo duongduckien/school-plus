@@ -1,0 +1,30 @@
+// Common
+export const GLOBAL_CONFIG = 'GLOBAL_CONFIG';
+export const SHOW_LOADING = 'SHOW_LOADING';
+export const SHOW_MESSAGE = 'SHOW_MESSAGE';
+
+// Agents
+export const SHOW_AGENT_MODAL = 'SHOW_AGENT_MODAL';
+export const SET_AGENT_MODAL_TYPE = 'SET_AGENT_MODAL_TYPE';
+export const AGENTS_DATA = 'AGENTS_DATA';
+export const SEARCH_AGENT = 'SEARCH_AGENT';
+export const SET_AGENT_VAL = 'SET_AGENT_VAL';
+export const SET_GRANT_ACCESS_AGENT = 'SET_GRANT_ACCESS_AGENT';
+
+// Vacations
+export const VACATIONS_DATA = 'VACATIONS_DATA';
+
+// Pupils
+export const PUPILS_DATA = 'PUPILS_DATA';
+export const PUPIL_SEARCH = 'PUPIL_SEARCH';
+export const SHOW_PUPIL_MODAL = 'SHOW_PUPIL_MODAL';
+export const SET_PUPIL_MODAL_TYPE = 'SET_PUPIL_MODAL_TYPE';
+export const PUPILS_SELECTED = 'PUPILS_SELECTED';
+export const SET_PUPIL_VAL = 'SET_PUPIL_VAL';
+export const SET_PUPIL_KEY_FOR_EDIT = 'SET_PUPIL_KEY_FOR_EDIT';
+
+// Status
+export const LOGS_DATA = 'LOGS_DATA';
+export const LOGS_HEADER = 'LOGS_HEADER';
+export const LOGS_EXCEL_DATA = 'LOGS_EXCEL_DATA';
+export const LOGS_EXCEL_HEADER = 'LOGS_EXCEL_HEADER';

@@ -1,0 +1,19 @@
+<div class="content-header">
+  <h2>{{'MONEY_PUNISH' | translate}}</h2>
+</div>
+
+<div class="body-content">
+  <div class="moneyPunish">
+      <form class="moneyPunishForm" action="">
+          <p class="invalid">{{ errMsg }}</p>
+          <p class="valid">{{ successMsg }}</p>
+          <div class='divInput'>
+            <input class="moneyPunishInput" name="email" placeholder="" type="text" [(ngModel)]="moneyPunish">
+            <p class="currency">{{'CURRENCY' | translate}}</p>
+          </div>
+          <button class="moneyPunishButtonSubmit" type="submit" (click)="validateMoneyPunish()">{{'UPDATE_MONEY_PUNISH' | translate}}</button>
+      </form>
+  </div>
+</div>
+
+<app-loading></app-loading>

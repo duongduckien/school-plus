@@ -1,0 +1,52 @@
+.wrap-date{
+    .to{
+        margin-left: 50px;
+    }
+}
+
+.fixed-td {
+    td {
+        height: 0 !important;
+        width: 25px !important;
+    }
+}
+
+.warning-half-day {
+    color: #ff9900;
+}
+
+.danger-half-day {
+    color: rgb(255, 0, 0);
+}
+
+.checkbox-item {
+    height: 35px;
+    line-height: 35px;
+    input {
+        float: left;
+        width: 25px;
+        height: 25px;
+    }
+    label {
+        float: left;
+    }
+}
+
+.total-money {
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: none !important;
+    height: 40px;
+    line-height: 40px;
+    td {
+        height: 40px !important;
+    }
+}
+
+.add-style-search-form {
+    padding-top: 0px;
+    height: 35px;
+    margin-bottom: 15px;
+    width: 245px;
+  }

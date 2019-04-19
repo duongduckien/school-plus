@@ -1,0 +1,23 @@
+<div class="content-header">
+    <h2>{{'PUPIL_MANAGEMENT' | translate}}</h2>
+
+    <div class="search-form">
+        <label for="">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </label>
+        <input type="text" placeholder="Tìm kiếm" [(ngModel)]="searchText" (ngModelChange)="onChangePupilSearch($event)">
+        <button (click)="showModalPopup()">{{'ADD_PUPIL' | translate}}</button>
+        <button 
+            type="submit"
+            (click)="printIdCard()" 
+            [ngClass]="(pupilsSelected.length === 0) ? 'print-card-disable' : 'print-card-enable'" 
+            [disabled]="pupilsSelected.length === 0"
+        >{{'PRINT_ID_CARD' | translate}}</button>
+    </div>
+</div>
+
+<app-pupil-list-view></app-pupil-list-view>
+
+<app-pupil-modal></app-pupil-modal>
+
+<app-loading></app-loading>

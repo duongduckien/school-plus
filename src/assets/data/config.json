@@ -1,0 +1,107 @@
+{
+    "environment": "development",
+    "firebase": {
+        "apiKey": "AIzaSyBTcFpQI9xIC5BYVXYE0YX9JcOqcpOLZAU",
+        "authDomain": "schoolplus-91b9a.firebaseapp.com",
+        "databaseURL": "https://schoolplus-91b9a.firebaseio.com",
+        "projectId": "schoolplus-91b9a",
+        "storageBucket": "schoolplus-91b9a.appspot.com",
+        "messagingSenderId": "749489843463"
+    },
+    "administrator": {
+        "email": "admin@example.com",
+        "password": "123456"
+    },
+    "relationship": {
+        "pupils": [
+            {
+                "fieldName": "group_class",
+                "collectionName": "groups"
+            }
+        ]
+    },
+    "report": {
+        "daysForReport": 6       
+    },
+    "validate": {
+        "minLengthPassword": 6,
+        "lengthMatercode": 4
+    },
+    "formatDate": {
+        "vacation": "D mm/dd/yy"
+    },
+    "recurrentDefault": {
+        "scheduleAm": ["SATURDAY_AM", "SUNDAY_AM"],
+        "schedulePm": ["SATURDAY_PM", "SUNDAY_PM"]
+    },
+    "bloodGroup": [
+        {
+            "label": "O",
+            "value": "O"
+        },
+        {
+            "label": "A",
+            "value": "A"
+        },
+        {
+            "label": "B",
+            "value": "B"
+        },
+        {
+            "label": "AB",
+            "value": "AB"
+        }
+    ],
+    "sex": [
+        {
+            "label": "Nam",
+            "value": "Nam"
+        },
+        {
+            "label": "Nữ",
+            "value": "Nữ"
+        },
+        {
+            "label": "Khác",
+            "value": "Khác"
+        }
+    ],
+    "meals": [
+        {
+            "label": "AT_SCHOOL",
+            "value": "AT_SCHOOL"
+        },
+        {
+            "label": "LUNCH_BOX",
+            "value": "LUNCH_BOX"
+        },
+        {
+            "label": "OUTSIDE",
+            "value": "OUTSIDE"
+        },
+        {
+            "label": "OTHERS",
+            "value": "OTHERS"
+        }
+    ],
+    "avatarFolder": "avatar",
+    "qrCodeFolder": "qrcode",
+    "debugger": {
+        "exportExcel": false,
+        "showErrorLogs": false
+    },
+    "exportFile": {
+        "prefixName": "export_",
+        "extension": "xlsx"
+    },
+    "grantAccess": {
+        "reports": "",
+        "groups": "",
+        "vacations": "",
+        "vacation-settings": "",
+        "agents": "AGENT_MANAGEMENT",
+        "pupils": "PUPIL_MANAGEMENT",
+        "code": "MASTER_CODE",
+        "settings": ""
+    }
+}

@@ -1,0 +1,109 @@
+<div class="modal modal-overlay" *ngIf="showPupilModal">
+    <div class="modal-form addPupil">
+        <div class="modal-header">
+            <h3 class="col col-50">{{'ADD_PUPIL' | translate}}</h3>
+            <div class="col col-50 modal-footer">
+                <div *ngIf="pupilModalType['type'] && pupilModalType['type'] == 'addPupil'">
+                    <button type="button" class="btnCancel" (click)="cancelModal()">{{'BACK' | translate}}</button>
+                    <button type="submit" class="btnSave" (click)="validatePupil()">{{'SAVE' | translate}}</button>
+                </div>
+
+                <div *ngIf="pupilModalType['type'] && pupilModalType['type'] == 'editPupil'">
+                    <button type="button" class="btnCancel" (click)="cancelModal()">{{'BACK' | translate}}</button>
+                    <button type="submit" class="btnSave" (click)="validatePupil()">{{'UPDATE' | translate}}</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-content">
+
+            <p class="invalid">{{ errorMsg }}</p>
+            <p class="valid">{{ successMsg }}</p>
+
+            <div class="col col-33 wrap-label-input">
+                <label for="">{{'ID' | translate}}</label>
+                <input type="text" placeholder="" name="id" [(ngModel)]="pupilVal.id">
+            </div>
+
+            <div class="col col-33 wrap-label-input">
+                <label for="">{{'FIRST_NAME' | translate}}</label>
+                <input type="text" placeholder="" name="fname" [(ngModel)]="pupilVal.first_name">
+            </div>
+
+            <div class="col col-33 wrap-label-input">
+                <label for="">{{'LAST_NAME' | translate}}</label>
+                <input type="text" placeholder="" name="lname" [(ngModel)]="pupilVal.last_name">
+            </div>
+
+            <div class="col col-33 wrap-label-input">
+                <label for="">{{'HOME_ADDRESS' | translate}}</label>
+                <input type="text" placeholder="" name="home_address" [(ngModel)]="pupilVal.home_address">
+            </div>
+
+            <div class="col col-33 wrap-label-input">
+                <label for="">{{'SEX' | translate}}</label>
+                <select [(ngModel)]="pupilVal.sex" name="sex">
+                    <option value="" disabled selected>{{'SELECT_SEX' | translate}}</option>
+                    <option *ngFor="let item of sex" [value]="item['value']">{{ item['label'] }}</option>
+                </select>
+            </div>
+
+            <div class="col col-33 wrap-label-input">
+                <label for="">{{'TUTOR' | translate}}</label>
+                <input type="text" placeholder="" name="tutor" [(ngModel)]="pupilVal.tutor">
+            </div>
+
+            <div class="col col-33 wrap-label-input">
+                <label for="">{{'ALLERGIES' | translate}}</label>
+                <input type="text" placeholder="" name="allergies" [(ngModel)]="pupilVal.allergies">
+            </div>
+
+            <div class="col col-33 wrap-label-input">
+                <label for="">{{'DATE_OF_BIRTH' | translate}}</label>
+                <input type="text" placeholder="" name="dob" [(ngModel)]="pupilVal.date_of_birth">
+            </div>
+
+            <div class="col col-33 wrap-label-input">
+                <label for="">{{'FATHER_MOBILE' | translate}}</label>
+                <input type="text" placeholder="" name="father_mobile" [(ngModel)]="pupilVal.father_mobile">
+            </div>
+
+            <div class="col col-33 wrap-label-input">
+                <label for="">{{'MOTHER_MOBILE' | translate}}</label>
+                <input type="text" placeholder="" name="mother_mobile" [(ngModel)]="pupilVal.mother_mobile">
+            </div>
+
+            <div class="col col-33 wrap-label-input">
+                <label for="">{{'BLOOD_GROUP' | translate}}</label>
+                <select [(ngModel)]="pupilVal.blood_group" name="blood_group">
+                    <option value="" disabled selected>{{'SELECT_BLOOD_GROUP' | translate}}</option>
+                    <option *ngFor="let item of bloodGroup" [value]="item['value']">{{ item['label'] }}</option>
+                </select>
+            </div>
+
+            <div class="col col-33 wrap-label-input">
+                <label for="">{{'MEAL' | translate}}</label>
+                <select [(ngModel)]="pupilVal.meal" name="meal">
+                    <option value="" disabled selected>{{'SELECT_MEAL' | translate}}</option>
+                    <option *ngFor="let item of meals" [value]="item['value']">{{ item['label'] | translate }}</option>
+                </select>
+            </div>
+
+            <div class="col col-33 wrap-label-input">
+                <label for="">{{'GROUP_CLASS' | translate}}</label>
+                <select [(ngModel)]="pupilVal.group_class" name="group_class">
+                    <option value="" disabled selected>{{'SELECT_GROUP_CLASS' | translate}}</option>
+                    <option *ngFor="let item of listGroups" [value]="item['value']">{{ item['label'] }}</option>
+                </select>
+            </div>
+
+            <div class="col col-50 wrap-label-input">
+                <label for="">{{'PICTURE' | translate}}</label>
+                <div class="img-present" *ngIf="pupilVal.avatar_url !== ''">
+                    <img src="{{ pupilVal.avatar_url }}">
+                </div>
+                <input type="file" name="avatar_url" value='' (change)='uploadAvatar($event)' accept="image/*">
+            </div>
+        </div>
+    </div>
+</div>

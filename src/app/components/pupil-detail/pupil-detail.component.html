@@ -1,0 +1,72 @@
+<div class="card-pupil-detail">
+
+    <div class="card-header-pupil-detail">
+        <i class="fa fa-align-justify icon-pupil-detail"></i> Thông tin chi tiết học sinh
+    </div>
+    
+    <div class="wrap-card-body-pupil-detail">
+        <div class="card-body-pupil-detail">
+            <ul class="list-group-pupil-detail">
+                <li class="list-group-item-pupil-detail">
+                    <div class="col-md-6 left-pupil-detail">{{'FIRST_NAME' | translate}} {{'LAST_NAME' | translate}} :</div>
+                    <p class="col-md-6 right-pupil-detail">{{ pupilDetail['first_name'] }} {{ pupilDetail['last_name'] }}</p>
+                </li>
+                <li class="list-group-item-pupil-detail">
+                    <div class="col-md-6 left-pupil-detail">{{'ID' | translate}} :</div>
+                    <p class="col-md-6 right-pupil-detail">{{ pupilDetail['id'] }}</p>
+                </li>
+                <li class="list-group-item-pupil-detail">
+                    <div class="col-md-6 left-pupil-detail">{{'HOME_ADDRESS' | translate}} :</div>
+                    <p class="col-md-6 right-pupil-detail">{{ pupilDetail['home_address'] }}</p>
+                </li>
+                <li class="list-group-item-pupil-detail">
+                    <div class="col-md-6 left-pupil-detail">{{'SEX' | translate}} :</div>
+                    <p class="col-md-6 right-pupil-detail">{{ pupilDetail['sex'] }}</p>
+                </li>
+                <li class="list-group-item-pupil-detail">
+                    <div class="col-md-6 left-pupil-detail">{{'TUTOR' | translate}} :</div>
+                    <p class="col-md-6 right-pupil-detail">{{ pupilDetail['tutor'] }}</p>
+                </li>
+                <li class="list-group-item-pupil-detail">
+                    <div class="col-md-6 left-pupil-detail">{{'ALLERGIES' | translate}} :</div>
+                    <p class="col-md-6 right-pupil-detail">{{ pupilDetail['allergies'] }}</p>
+                </li>
+                <li class="list-group-item-pupil-detail">
+                    <div class="col-md-6 left-pupil-detail">{{'DATE_OF_BIRTH' | translate}} :</div>
+                    <p class="col-md-6 right-pupil-detail">{{ pupilDetail['date_of_birth'] }}</p>
+                </li>
+                <li class="list-group-item-pupil-detail">
+                    <div class="col-md-6 left-pupil-detail">{{'FATHER_MOBILE' | translate}} :</div>
+                    <p class="col-md-6 right-pupil-detail">{{ pupilDetail['father_mobile'] }}</p>
+                </li>
+                <li class="list-group-item-pupil-detail">
+                    <div class="col-md-6 left-pupil-detail">{{'MOTHER_MOBILE' | translate}} :</div>
+                    <p class="col-md-6 right-pupil-detail">{{ pupilDetail['mother_mobile'] }}</p>
+                </li>
+                <li class="list-group-item-pupil-detail">
+                    <div class="col-md-6 left-pupil-detail">{{'BLOOD_GROUP' | translate}} :</div>
+                    <p class="col-md-6 right-pupil-detail">{{ pupilDetail['blood_group'] }}</p>
+                </li>
+                <li class="list-group-item-pupil-detail">
+                    <div class="col-md-6 left-pupil-detail">{{'MEAL' | translate}} :</div>
+                    <p class="col-md-6 right-pupil-detail">{{ pupilDetail['meal'] }}</p>
+                </li>
+                <li class="list-group-item-pupil-detail">
+                    <div class="col-md-6 left-pupil-detail">{{'GROUP_CLASS' | translate}} :</div>
+                    <p class="col-md-6 right-pupil-detail">{{ pupilDetail['group_class'] }}</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="chart-and-image">
+            <div *ngIf="pupilDetail.avatar_url !== ''">
+                <img class="image-pupil-detail" src="{{ pupilDetail['avatar_url'] }}">
+            </div>
+            <div class="chart-pupil-detail">
+                <p-chart type="radar" [data]="data"></p-chart>
+            </div>
+        </div>
+
+    </div>
+
+</div>

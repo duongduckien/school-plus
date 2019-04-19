@@ -1,0 +1,95 @@
+<div class="modal modal-overlay" *ngIf="showAgentModal">
+    <div class="modal-form addAgent">
+        <div class="modal-header">
+            <h3 *ngIf="agentModalType['type'] && agentModalType['type'] == 'addAgent'" class="col col-50">{{'ADD_AGENT'
+                | translate}}</h3>
+            <h3 *ngIf="agentModalType['type'] && agentModalType['type'] == 'editAgent'" class="col col-50">{{'EDIT_AGENT'
+                | translate}}</h3>
+            <div class="col col-50 modal-footer">
+                <div *ngIf="agentModalType['type'] && agentModalType['type'] == 'addAgent'">
+                    <button type="button" class="btnCancel" (click)="cancelModal()">{{'BACK' | translate}}</button>
+                    <button type="submit" class="btnSave" (click)="validateAgent()">{{'SAVE' | translate}}</button>
+                </div>
+
+                <div *ngIf="agentModalType['type'] && agentModalType['type'] == 'editAgent'">
+                    <button type="button" class="btnCancel" (click)="cancelModal()">{{'BACK' | translate}}</button>
+                    <button type="submit" class="btnSave" (click)="validateAgent()">{{'UPDATE' | translate}}</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-content">
+
+            <p class="invalid" *ngIf="errorMsg !== ''">{{ errorMsg }}</p>
+            <p class="valid" *ngIf="successMsg !== ''">{{ successMsg }}</p>
+
+            <div class="col col-33 wrap-label-input">
+                <label for="">{{'FIRST_NAME' | translate}}</label>
+                <input type="text" placeholder="" name="fname" [(ngModel)]="agentVal.firstName">
+            </div>
+
+            <div class="col col-33 wrap-label-input">
+                <label for="">{{'LAST_NAME' | translate}}</label>
+                <input type="text" placeholder="" name="lname" [(ngModel)]="agentVal.lastName">
+            </div>
+
+            <div class="col col-33 wrap-label-input">
+                <label for="">{{'EMAIL' | translate}}</label>
+
+                <div *ngIf="agentModalType['type'] && agentModalType['type'] == 'addAgent'">
+                    <input type="text" placeholder="" name="email" [(ngModel)]="agentVal.email">
+                </div>
+
+                <div *ngIf="agentModalType['type'] && agentModalType['type'] == 'editAgent'">
+                    <input type="text" readonly placeholder="" name="email" [(ngModel)]="agentVal.email">
+                </div>
+            </div>
+
+            <div class="col col-33 wrap-label-input">
+                <label for="">{{'PHONE_NUMBER' | translate}}</label>
+                <input type="text" placeholder="" name="phoneNumber" [(ngModel)]="agentVal.phoneNumber">
+            </div>
+
+            <div class="col col-33 wrap-label-input">
+                <label for="">{{'PASSWORD' | translate}}</label>
+
+                <div *ngIf="agentModalType['type'] && agentModalType['type'] == 'addAgent'">
+                    <input type="password" placeholder="" name="password" [(ngModel)]="agentVal.password">
+                </div>
+
+                <div *ngIf="agentModalType['type'] && agentModalType['type'] == 'editAgent'">
+                    <input [type]="typePassword" placeholder="" name="password" [(ngModel)]="agentVal.password">
+                    <label for="" class="showPassword" (click)="showPassword('password')">
+                        <i class="ion-eye"></i>
+                    </label>
+                </div>
+            </div>
+
+            <div class="col col-33 wrap-label-input">
+                <label for="">{{'CONFIRMED_PASSWORD' | translate}}</label>
+                <div *ngIf="agentModalType['type'] && agentModalType['type'] == 'addAgent'">
+                    <input type="password" placeholder="" name="cpassword" [(ngModel)]="agentVal.rePassword">
+                </div>
+                <div *ngIf="agentModalType['type'] && agentModalType['type'] == 'editAgent'">
+                    <input [type]="typeRePassword" placeholder="" name="cpassword" [(ngModel)]="agentVal.rePassword">
+                    <label for="" class="showPassword" (click)="showPassword('re-password')">
+                        <i class="ion-eye"></i>
+                    </label>
+                </div>
+            </div>
+
+            <div class="col col-100 wrap-label-input">
+                <div class="margin-auto">
+                    <label for="">{{'GRANT_ACCESS' | translate}}</label>
+                    <div *ngFor="let grant of grantAccess" style="display: flex">
+                        <label style="margin-left: 5px;">
+                            <p-checkbox name="groupname" value="{{ grant.name }}" [(ngModel)]="grantValues"></p-checkbox>
+                            {{ grant.name | translate }}
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="body-content">
+    <div class="setting">
+        <div class="setting-wrapper">
+            <div class="acc-setting">
+                <h2>{{'ADMIN_ACCOUNT_SETTINGS' | translate}}</h2>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="">{{'EMAIL' | translate}}</label>
+
+                        <div class="input-icon">
+                            <input type="text" readonly name="username" [(ngModel)]='admin.email'>
+
+                            <div class="icon">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="">{{'OLD_PASSWORD' | translate}}</label>
+
+                        <div class="input-icon">
+                            <input type="password" placeholder="" name="oldPassword" [(ngModel)]="oldPassword">
+
+                            <div class="icon">
+                                <i class="fa fa-key" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="">{{'NEW_PASSWORD' | translate}}</label>
+
+                        <div class="input-icon">
+                            <input type="password" placeholder="" name="newPassword" [(ngModel)]="newPassword">
+
+                            <div class="icon">
+                                <i class="fa fa-key" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="">{{'RETYPE_PASSWORD' | translate}}</label>
+
+                        <div class="input-icon">
+                            <input type="password" placeholder="" name="rePassword" [(ngModel)]="rePassword">
+
+                            <div class="icon">
+                                <i class="fa fa-key" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" (click)="validateAdminAccount()">{{'SAVE_NEW_PASSWORD' | translate}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-loading></app-loading>

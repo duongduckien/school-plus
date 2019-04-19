@@ -1,0 +1,155 @@
+<div *ngIf="allowShowListReport" class="content-header">
+    <div class="wrap-date">
+        <div class="from" style="margin-right: 10px">
+            <span>{{'REPORT_TYPE' | translate}}</span>
+            <p-dropdown [options]="typeOptions" [(ngModel)]="typeSelected" (ngModelChange)="onChangeType()"></p-dropdown>
+        </div>
+
+        <div class="from">
+            <span>{{'FROM' | translate}}</span>
+            <p-calendar [(ngModel)]="dateFrom" dateFormat="dd/mm/yy" [readonlyInput]="true" [showIcon]="true"
+                (ngModelChange)="handleOnChangeDate()"></p-calendar>
+        </div>
+
+        <div class="to">
+            <span>{{'TO' | translate}}</span>
+            <p-calendar [(ngModel)]="dateTo" dateFormat="dd/mm/yy" [readonlyInput]="true" [showIcon]="true"
+                (ngModelChange)="handleOnChangeDate()"></p-calendar>
+        </div>
+    </div>
+
+    <div class="search-form add-style-search-form">
+        <label for="">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </label>
+        <input type="text" placeholder="Tìm kiếm" [(ngModel)]="searchText">
+    </div>
+
+</div>
+
+<div *ngIf="allowShowListReport" class="body-content">
+    <div class="status-table">
+        <div class="status-table-grid">
+            <div class="left-col">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>{{'PUPILS' | translate}}</td>
+                            <td>{{'SEX' | translate}}</td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor='let item of status| statusFilter: searchText'>
+                            <td>{{ item.first_name + " " + item.last_name }}</td>
+                            <td>{{item.sex}}</td>
+                        </tr>
+                        <tr class="total-money">
+                            <td colspan="2">{{'TOTAL' | translate}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="center-col" [ngStyle]="{'max-width.px': maxWidthCenterCol}">
+                <table>
+                    <thead>
+                        <tr>
+                            <td *ngFor='let item of header'>
+                                <span class="day">{{item.day}}</span><br>
+                                <span class="date">
+                                    ({{ item.date }}
+                                    <span class="sup">{{item.sup}}</span>
+                                    {{ item.month }})
+                                </span>
+                            </td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor='let item of status | statusFilter: searchText'>
+                            <td *ngFor='let log of item.logs'>
+                                <tr class="fixed-td">
+                                    <td style="color: dodgerblue" *ngIf="log.time_checkin_am !== 0 || log.time_checkout_am !== 0">AM</td>
+                                    <td style="color: green" *ngIf="log.time_checkin_am !== 0">{{ log.time_checkin_am |
+                                        date:'HH:mm' }}</td>
+                                    <td>{{ log.agent_name_checkin_am }}</td>
+                                    <td style="color: red" *ngIf="log.time_checkout_am !== 0">{{ log.time_checkout_am |
+                                        date:'HH:mm' }}</td>
+                                    <td>{{ log.agent_name_checkout_am }}</td>
+                                </tr>
+
+                                <tr class="fixed-td">
+                                    <td style="color: dodgerblue" *ngIf="log.time_checkin_pm !== 0 || log.time_checkout_pm !== 0">PM</td>
+                                    <td style="color: green" *ngIf="log.time_checkin_pm !== 0">{{ log.time_checkin_pm |
+                                        date:'HH:mm' }}</td>
+                                    <td>{{ log.agent_name_checkin_pm }}</td>
+                                    <td style="color: red" *ngIf="log.time_checkout_pm !== 0">{{ log.time_checkout_pm |
+                                        date:'HH:mm' }}</td>
+                                    <td>{{ log.agent_name_checkout_pm }}</td>
+                                </tr>
+                            </td>
+                        </tr>
+                        <tr class="total-money"><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="right-col">
+                <table>
+                    <thead>
+                        <tr *ngIf="typeSelected === 'BEFORE_AFTERSCHOOL'">
+                            <td>{{'HALF_HOUR' | translate}}<br>{{'UNITS' | translate}}</td>
+                        </tr>
+                        <tr *ngIf="typeSelected === 'CLASS_ATTENDANCE'">
+                            <td>{{'MONEY_PUNISHED' | translate}}
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor='let item of status | statusFilter: searchText'>
+                            <td *ngIf="typeSelected === 'BEFORE_AFTERSCHOOL'">{{ item.half_total }}</td>
+                            <td *ngIf="typeSelected === 'CLASS_ATTENDANCE'">{{ item.total_money_punish | currency:'VND':true:'1.0' }}</td>
+                        </tr>
+                        <tr class="total-money">
+                            <td>{{ (status | statusCalculateTotalMoneyAfterFilter: searchText: totalMoneyPunish) | currency:'VND':true:'1.0'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="export">
+        <div class="group-export">
+            <div class="btn-export" (click)="showExportOptions()" [ngClass]="[showExportExcel ? 'active' : '']">
+                <i class="ion-android-download"></i>{{'EXPORT' | translate}}
+            </div>
+
+            <div class="export-option">
+                <button (click)="exportExcel()">
+                    <i class="fa fa-file-excel-o" aria-hidden="true"></i>{{'DOWNLOAD_AS_EXCEL' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-loading></app-loading>
+
+<table class="table table-bordered" id="export-excel" [style.display]="(debuggerExportExcel && env === 'development') ? 'block' : 'none'">
+    <thead>
+        <tr>
+            <th *ngFor="let itemHeader of headerExcelFile" [colSpan]="itemHeader['merge'] ? itemHeader['cells'] : 1">
+                {{ itemHeader['value'] }}
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let itemStatus of excelData">
+            <td *ngFor="let excel of itemStatus['excelData']; let i = index">
+                {{ excel['value'] }}
+            </td>
+        </tr>
+    </tbody>
+</table>

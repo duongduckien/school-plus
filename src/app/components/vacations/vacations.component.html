@@ -1,0 +1,71 @@
+<div class="content-header">
+    <h2>{{'VACATIONS_NON_SCHOOL_DAYS' | translate}}</h2>
+
+    <div class="search-form">
+        <label for=""><i class="fa fa-search" aria-hidden="true"></i></label>
+        <input type="text" placeholder="{{'SEARCH' | translate}}" [(ngModel)]="searchText">
+        <button (click)="showAddVacation(true)">{{'ADD_VACATION' | translate}}</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div *ngFor='let vacation of (vacationsData | searchVacation: searchText); let i = index'>
+            <div class="mb-20">
+                <p class="form-title">{{vacation['vacation_name']}}</p>
+                <div class="wrap-form">
+                    <div>
+                        <div class="flex-row-between mb-10">
+                            <span class="mr-10">{{'START_TIME' | translate}}</span>
+                            <p-calendar [(ngModel)]="vacationsData[i]['startTime']" [readonlyInput]="true" [showIcon]="true" [dateFormat]="vacationFormatDate" (ngModelChange)="onChangeTime('start', vacationsData[i]['startTime'], vacationsData[i]['$key'], vacationsData[i]['endTime'])"></p-calendar>
+                        </div>
+    
+                        <div class="flex-row-between">
+                            <span class="mr-10">{{'END_TIME' | translate}}</span>
+                            <p-calendar [(ngModel)]="vacationsData[i]['endTime']" [readonlyInput]="true" [showIcon]="true" [dateFormat]="vacationFormatDate" (ngModelChange)="onChangeTime('end', vacationsData[i]['endTime'], vacationsData[i]['$key'], vacationsData[i]['startTime'])"></p-calendar>
+                        </div>
+                    </div>
+    
+                    <p-inputSwitch [(ngModel)]="vacationsData[i]['checked']" [onLabel]="onLabel" [offLabel]="offLabel" (onChange)="onChangeType(vacationsData[i]['checked'], vacationsData[i]['$key'])"></p-inputSwitch>
+                    <i class="fa fa-trash" style="font-size: 18px" (click)="deleteVacation(vacationsData[i]['$key'])"></i>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="addVacation">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group mt-20 ml-20">
+                        <input type="text" class="form-control" placeholder="{{'ENTER_VACATION_NAME' | translate}}" [(ngModel)]="vacationName">
+                    </div>
+                </div>
+            </div>
+    
+            <div class="mb-20">
+                <div class="wrap-form">
+                    <div>
+                        <div class="flex-row-between mb-10">
+                            <span class="mr-10">{{'START_TIME' | translate}}</span>
+                            <p-calendar [(ngModel)]="startTime" [readonlyInput]="true" [showIcon]="true" [dateFormat]="vacationFormatDate"></p-calendar>
+                        </div>
+    
+                        <div class="flex-row-between">
+                            <span class="mr-10">{{'END_TIME' | translate}}</span>
+                            <p-calendar [(ngModel)]="endTime" [readonlyInput]="true" [showIcon]="true" [dateFormat]="vacationFormatDate"></p-calendar>
+                        </div>
+                    </div>
+                    
+                    <p-inputSwitch [(ngModel)]="typeVacation" [onLabel]="onLabel" [offLabel]="offLabel"></p-inputSwitch>
+
+                    <button class="btn btn-default" (click)="showAddVacation(false)"><i class="fa fa-times"></i></button>
+                </div>
+
+                <div class="text-right" style="width: 500px;">
+                    <button class="btn btn-success mt-10" (click)="validateVacation()">{{'SAVE' | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-loading></app-loading>

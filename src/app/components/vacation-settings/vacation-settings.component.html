@@ -1,0 +1,82 @@
+<div>
+	<div>
+		<button class="button-back" (click)="backToGroups()">
+				<i class="fas fa-fast-backward icon-back"></i>Trở lại
+		</button>
+	</div>
+	<div class="chart-area">
+		<div class="col-md-6">
+			<div class="card-vacation">
+				<p class="title">{{'SELECT_RECURRENT_NONE_SCHOOL_DAYS' | translate}}</p>
+				<p-chart type="doughnut" [data]="doughnutChart"></p-chart>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="card-vacation">
+				<p class="title">{{'SELECT_RECURRENT_NONE_SCHOOL_DAYS' | translate}}</p>
+				<p-chart type="bar" [data]="barChart"></p-chart>
+			</div>
+		</div>
+	</div>
+
+	<div class="">
+		<p class="title">{{'SELECT_RECURRENT_NONE_SCHOOL_DAYS' | translate}}</p>
+
+		<div class="flex-row-between mb-10">
+			<div *ngFor="let itemAm of scheduleAm">
+				<label>
+					<span class="pr-10">{{itemAm['name'] | translate}}</span>
+					<p-checkbox name="groupname" value="{{ itemAm['name'] }}" [(ngModel)]="scheduleValAm" (onChange)="handleChangeRecurrent('AM')"></p-checkbox>
+				</label>
+			</div>
+		</div>
+
+		<div class="flex-row-between">
+			<div *ngFor="let itemPm of schedulePm">
+				<label>
+					<span class="pr-10">{{itemPm['name'] | translate}}</span>
+					<p-checkbox name="groupname" value="{{ itemPm['name'] }}" [(ngModel)]="scheduleValPm" (onChange)="handleChangeRecurrent('PM')"></p-checkbox>
+				</label>
+			</div>
+		</div>
+	</div>
+
+	<div class="select-all-area">
+		<p class="title">{{'SELECT_ALL_VACATIONS' | translate}}</p>
+		<div class="flex-row-between mb-10">
+			<label>
+				<span class="pr-10">{{'SELECT_ALL' | translate }}</span>
+				<p-checkbox name="groupname" value="selectAll" [(ngModel)]="selectAll" (onChange)="selectAllVacations()"></p-checkbox>
+			</label>
+			<div *ngFor="let vacation of vacations">
+				<div class="col-sm-6">
+					<label>
+						<span class="pr-10" (mouseover)="handleHoverVacation($event, vacation, hoverPanel)">{{ vacation['vacation_name']
+							}}</span>
+						<p-checkbox name="groupname" value="{{ vacation['$key'] }}" [(ngModel)]="selectedVacations" (onChange)="handleSelectVacation()"></p-checkbox>
+					</label>
+				</div>
+			</div>
+		</div>
+		<p-overlayPanel #hoverPanel>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="wrap-time-vacation">
+						<div class="time-item">
+							<p>{{'START_TIME' | translate }}</p>
+							<p class="time">{{ hoverStartTime | date:'EEEE LL/dd/yyyy' }}</p>
+							<p class="time">{{ hoverType }}</p>
+						</div>
+						<div class="time-item">
+							<p>{{'END_TIME' | translate }}</p>
+							<p class="time">{{ hoverEndTime | date:'EEEE LL/dd/yyyy' }}</p>
+							<p class="time">{{ hoverType }}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</p-overlayPanel>
+	</div>
+</div>
+
+<app-loading></app-loading>

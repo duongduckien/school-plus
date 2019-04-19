@@ -1,0 +1,57 @@
+<div class="body-content">
+    <p-dropdown [options]="groups" [(ngModel)]="selectedGroup"></p-dropdown>
+    <p-dropdown [options]="agents" [(ngModel)]="selectedAgent" (onChange)="changeAgent()"></p-dropdown>
+    <div class="pupil-table">
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                        <p-checkbox name="groupname" value="selectAll" [(ngModel)]="selectAll" (onChange)="selectAllPupil()"></p-checkbox>
+                    </td>
+                    <td (click)='orderBy("id")'>{{'ID' | translate}}
+                        <div class="order">
+                            <span class="ion-arrow-up-b"></span>
+                            <span class="ion-arrow-down-b"></span>
+                        </div>
+                    </td>
+                    <td (click)='orderBy("last_name")'>{{'NAME' | translate}}
+                        <div class="order">
+                            <span class="ion-arrow-up-b"></span>
+                            <span class="ion-arrow-down-b"></span>
+                        </div>
+                    </td>
+                    <td>{{'ADDRESS' | translate}}</td>
+                    <td>{{'DATE_OF_BIRTH' | translate}}</td>
+                    <td>{{'FATHER_MOBILE' | translate}}</td>
+                    <td>{{'MOTHER_MOBILE' | translate}}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor='let pupil of (pupils | pupilSearch:searchText | pupilFilterGroup:selectedGroup | pupilFilterAgent:groupsByAgent )'>
+                    <td>
+                        <p-checkbox name="groupname" value="{{ pupil['$key'] }}" [(ngModel)]="selectedPupil" (onChange)="selectPupil()"></p-checkbox>
+                    </td>
+                    <td>{{ pupil['id'] }}</td>
+                    <td>{{ pupil['first_name'] + ' ' + pupil['last_name'] }}</td>
+                    <td>{{ pupil['home_address'] }}</td>
+                    <td>{{ pupil['date_of_birth'] }}</td>
+                    <td>{{ pupil['father_mobile'] }}</td>
+                    <td>{{ pupil['mother_mobile'] }}</td>
+                    <td><img src="{{ pupil['avatar_url'] }}" alt=""></td>
+                    <td>
+                        <qrcode qrdata="{{ pupil['id'] }}" [size]="256" [level]="'M'"></qrcode>
+                    </td>
+                    <td>
+                        <i class="fas fa-user-graduate" aria-hidden="true" (click)="redirectToPupilDetail(pupil['id'])"></i>
+                        <i class="fa fa-pencil" aria-hidden="true" (click)="editPupil(pupil['$key'])"></i>
+                        <i class="fa fa-trash" aria-hidden="true" (click)="deletePupil(pupil['$key'])"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

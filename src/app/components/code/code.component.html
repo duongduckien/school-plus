@@ -1,0 +1,16 @@
+<div class="content-header">
+    <h2>{{'MASTERCODE' | translate}}</h2>
+</div>
+
+<div class="body-content">
+    <div class="masterCode">
+        <form action="">
+            <p class="invalid">{{ errMsg }}</p>
+            <p class="valid">{{ successMsg }}</p>
+            <input name="email" placeholder="" type="text" [(ngModel)]="code">
+            <button type="submit" (click)="validateCode()">{{'UPDATE_MASTERCODE' | translate}}</button>
+        </form>
+    </div>
+</div>
+
+<app-loading></app-loading>

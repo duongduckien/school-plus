@@ -1,0 +1,48 @@
+<div class="col-md-8">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="card-12">
+                <p class="title">Doanh thu năm 2018</p>
+                <p-chart type="bar" [data]="barChart"></p-chart>
+            </div>
+        </div>
+
+        <div class="col-md-4 wrap-card-4" *ngFor="let doughnutChart of doughnutCharts">
+            <div class="card-4">
+
+                <p class="title">{{doughnutChart.title}}</p>
+                <div class="wrap-chart">
+                    <p-chart type="doughnut" [data]="doughnutChart"></p-chart>
+                </div>
+
+                <div class="line">
+                    <p class="left-line">Tổng số buổi học</p>
+                    <p class="right-line">{{ doughnutChart.datasets[0].data[0] + doughnutChart.datasets[0].data[1]}}</p>
+                </div>
+                <div class="line">
+                    <p class="left-line">Số buổi đúng giờ</p>
+                    <p class="right-line">{{ doughnutChart.datasets[0].data[1] }}</p>
+                </div>
+                <div class="line">
+                    <p class="left-line">Số buổi đi muộn</p>
+                    <p class="right-line">{{ doughnutChart.datasets[0].data[1] }}</p>
+                </div>
+                <div class="line">
+                    <p class="left-line">Phần trăm đi muộn</p>
+                    <p class="right-line">{{ (doughnutChart.datasets[0].data[1] * 100 /
+                        (doughnutChart.datasets[0].data[0] + doughnutChart.datasets[0].data[1])).toFixed(2) }} %</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card-12">
+        <p class="title">Biểu đồ tỉ lệ đi muộn trung bình</p>
+        <p-chart type="doughnut" [data]="doughnutCharts[0]"></p-chart>
+    </div>
+</div>

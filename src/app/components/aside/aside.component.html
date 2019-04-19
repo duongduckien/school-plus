@@ -1,0 +1,61 @@
+<div class="sidebar">
+    <nav class="sidebar-nav">
+        <div>
+            <div class="nav-title">
+                {{'MENU' | translate}}
+            </div>
+        </div>
+        <ul class="nav">
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="/statistic" routerLinkActive="active">
+                    <i class="fas fa-chart-bar nav-icon"></i>{{'STATISTIC' | translate}}
+                </a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="/reports" routerLinkActive="active">
+                    <i class="fas fa-file nav-icon"></i>{{'REPORTS' | translate}}
+                </a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="/groups" routerLinkActive="active">
+                    <i class="fas fa-users-cog nav-icon"></i>{{'GROUP_MANAGEMENT' | translate}}
+                </a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="/vacations" routerLinkActive="active">
+                    <i class="fas fa-calendar nav-icon"></i>{{'VACATIONS_NON_SCHOOL_DAYS' | translate}}
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="permission.indexOf('AGENT_MANAGEMENT') > -1" routerLinkActive="active">
+                <a class="nav-link" routerLink="/agents" routerLinkActive="active">
+                    <i class="fas fa-user-cog nav-icon"></i>{{'AGENTS_MANAGEMENT' | translate}}
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="permission.indexOf('PUPIL_MANAGEMENT') > -1" routerLinkActive="active">
+                <a class="nav-link" routerLink="/pupils" routerLinkActive="active">
+                    <i class="fas fa-id-card nav-icon"></i>{{'PUPILS_MANAGEMENT' | translate}}
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="isAdmin">
+                <a class="nav-link" routerLink="/money-punish" routerLinkActive="active" routerLinkActive="active">
+                    <i class="fas fa-money-check-alt nav-icon"></i>{{'MONEY_PUNISH' | translate}}
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="permission.indexOf('MASTER_CODE') > -1" routerLinkActive="active">
+                <a class="nav-link" routerLink="/code" routerLinkActive="active">
+                    <i class="fas fa-key nav-icon"></i>{{'MASTERCODE' | translate}}
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="isAdmin" routerLinkActive="active">
+                <a class="nav-link" routerLink="/settings" routerLinkActive="active">
+                    <i class="fas fa-cogs nav-icon"></i>{{'SETTINGS' | translate}}
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="showErrorLogs" routerLinkActive="active">
+                <a class="nav-link" routerLink="/error-logs" routerLinkActive="active">
+                    <i class="fas fa-exclamation-triangle nav-icon" aria-hidden="true"></i>{{'SETTINGS' | translate}}
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

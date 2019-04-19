@@ -1,0 +1,94 @@
+//colors
+$white: #fff;
+$color_ghost_approx: #c8ced3;
+$color_viking_approx: #63c2de;
+
+.title{
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+input[type="checkbox"]{
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
+label{
+  display: flex;
+  align-items: center;
+}
+.select-vacations{
+  margin-top: 10px;
+  border-top: 1px solid black;
+  padding-top: 20px;
+  label{
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+}
+
+.wrap-time-vacation{
+  border: 1px solid black;
+  padding: 5px;
+  width: 500px;
+  p{
+    margin: 0;
+  }
+  .time-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &:first-child{
+      margin-bottom: 10px;
+    }
+  }
+  .time{
+    border: 1px solid gray;
+    padding: 5px;
+    width: 200px;
+  }
+}
+.ui-overlaypanel{
+  position: initial;
+  top: initial;
+  left: initial;
+}
+
+.card-vacation {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-color: $white;
+	//Instead of the line below you could use @include background-clip($clip)
+	background-clip: border-box;
+	border: 1px solid $color_ghost_approx;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.chart-area {
+  padding-bottom: 25rem;
+}
+
+.select-all-area {
+  padding-top: 2.5rem;
+}
+
+.button-back {
+  margin: 0rem 1rem 1rem;
+  padding: 10px 15px;
+  border-radius: 4px;
+  background-color: #36a2eb;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  .icon-back {
+    padding-right: 5px;
+  }
+}
